@@ -1,5 +1,5 @@
 boolean start, einde;
-int xMouse, yMouse, schietschijfX,schietschijfDiameter, schietschijfY, raak, mis;
+int xMouse, yMouse, schietschijfX, schietschijfDiameter, schietschijfY, raak, mis;
 
 
 void setup () {
@@ -17,10 +17,9 @@ void draw() {
   background();
   knop();
   textKnop();
-  schietSchijf();
-  bewegenSchijf();
-  
+  schietSchijf(); 
   scoreBord();
+  bewegenSchijf(); 
 };
 
 void mouseClicked() {
@@ -63,28 +62,30 @@ void knopKlik() {
 };
 
 void schietSchijf() {
-  
-  fill(255,0,0);
-  ellipse(schietschijfX,schietschijfY,schietschijfDiameter,schietschijfDiameter);
+
+  fill(255, 0, 0);
+  ellipse(schietschijfX, schietschijfY, schietschijfDiameter, schietschijfDiameter);
 };
 
 void bewegenSchijf() {
-  if (einde == false){
-    schietschijfX ++;
-  } else {
-    schietschijfX --;
+  if (start == true) {
+    if (einde == false) {
+      schietschijfX ++;
+    } else {
+      schietschijfX --;
+    }
   }
-  
-  if (schietschijfX == width - (schietschijfDiameter/2)){
+
+  if (schietschijfX == width - (schietschijfDiameter/2)) {
     einde = true;
-  } else if (schietschijfX == schietschijfDiameter/2 ){
+  } else if (schietschijfX == schietschijfDiameter/2 ) {
     einde = false;
   }
 };
 
 void score() {
   if (xMouse >= schietschijfX-schietschijfDiameter && xMouse >= schietschijfX+schietschijfDiameter
-  && yMouse >= schietschijfY-schietschijfDiameter && yMouse <= schietschijfY + schietschijfDiameter){
+    && yMouse >= schietschijfY-schietschijfDiameter && yMouse <= schietschijfY + schietschijfDiameter) {
     raak ++;
   } else {
     mis ++;
@@ -93,5 +94,5 @@ void score() {
 
 void scoreBord() {
   fill(255);
-  text("Aantal raak: " + raak + " aantal mis: " + mis, width/2,20);
+  text("Aantal raak: " + raak + " aantal mis: " + mis, width/2, 20);
 };
